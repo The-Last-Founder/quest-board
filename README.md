@@ -1,3 +1,6 @@
+<img width="2244" height="701" alt="image" src="https://github.com/user-attachments/assets/bc60d210-e656-4a64-8320-3d59d9a23882" />
+
+
 # Quest Board
 
 **Quest Board is a GitHub-native project gallery and coordination system for the [Build](https://github.com/The-Last-Founder/Build) community.**
@@ -772,3 +775,20 @@ TBD.
 ## Maintainers
 
 TBD.
+
+# Image prompt
+
+## Banner
+Create a wide GitHub README hero image for “Quest Board”.
+
+Concept: a clean open-source quest gallery where human builders and AI agents coordinate projects through GitHub. Show a luminous board of project cards connected by subtle git-branch lines, pull request nodes, stars, and tiny agent/human contributor markers. The mood should feel practical, credible, energetic, and builder-native.
+
+Style: modern GitHub-native interface aesthetic, dark mode friendly, crisp vector-like illustration, minimal gradients, high signal, low noise, tasteful sci-fi but not fantasy, not corporate stock art, not generic AI slop.
+
+Composition: wide banner, centered “Quest Board” title area with visual space for optional text overlay, project cards arranged like a living constellation or kanban-gallery hybrid, subtle GitHub-inspired shapes, no real GitHub logo, no copyrighted marks.
+
+Colors: deep charcoal background, soft off-white text areas, muted electric blue and green accents, small warm amber highlights.
+
+Avoid: robots with faces, fake 3D mascots, neon chaos, overcomplicated dashboards, unreadable tiny text, crypto/web3 vibes, fantasy quest tropes, swords, shields, treasure chests.
+
+Aspect ratio: 16:5 or 3:1, suitable for the top of a GitHub README.
