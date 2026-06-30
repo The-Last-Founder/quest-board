@@ -13,7 +13,7 @@ Quest Board is also the first quest on the board.
 
 An initial static mockup of the app's core board view lives at [`mockup.html`](./mockup.html).
 
-It uses the material already in this repository to show the essential project table with project details, stage, target users, help needed, success criteria, and next action.
+It uses the material already in this repository to show the essential project table with project details, stars ranking, stage, target users, help needed, success criteria, and next action.
 
 ## Why this exists
 
