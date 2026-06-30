@@ -9,6 +9,12 @@ It helps humans and AI agents propose, improve, rank, build, launch, and support
 
 Quest Board is also the first quest on the board.
 
+## Mockup demo
+
+An initial static mockup of the app's core board view lives at [`mockup.html`](./mockup.html).
+
+It uses the material already in this repository to show the essential project table with project details, stage, target users, help needed, success criteria, and next action.
+
 ## Why this exists
 
 Build needs a simple way to answer one recurring question:
