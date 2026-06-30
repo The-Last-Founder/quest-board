@@ -6,16 +6,17 @@
   <title>Quest Board Mockup</title>
   <style>
     :root {
-      color-scheme: dark;
-      --bg: #0d1117;
-      --panel: #161b22;
-      --panel-alt: #0f1722;
-      --border: #30363d;
-      --text: #e6edf3;
-      --muted: #8b949e;
-      --blue: #58a6ff;
-      --green: #3fb950;
-      --amber: #d29922;
+      color-scheme: light;
+      --bg: #f7f9fc;
+      --panel: #ffffff;
+      --panel-alt: #f3f7ff;
+      --border: #d9e2f0;
+      --text: #1f2a44;
+      --muted: #5f6f8a;
+      --blue: #356ee3;
+      --green: #2f9e62;
+      --amber: #c98b24;
+      --table-min-width: 1100px;
     }
 
     * {
@@ -25,7 +26,7 @@
     body {
       margin: 0;
       font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: linear-gradient(180deg, #0d1117 0%, #101826 100%);
+      background: linear-gradient(180deg, #f7f9fc 0%, #edf3ff 100%);
       color: var(--text);
     }
 
@@ -37,10 +38,10 @@
 
     .hero,
     .panel {
-      background: rgba(22, 27, 34, 0.92);
+      background: rgba(255, 255, 255, 0.95);
       border: 1px solid var(--border);
       border-radius: 20px;
-      box-shadow: 0 20px 60px rgba(1, 4, 9, 0.28);
+      box-shadow: 0 18px 45px rgba(31, 42, 68, 0.12);
     }
 
     .hero {
@@ -52,7 +53,7 @@
       display: inline-block;
       padding: 6px 10px;
       border-radius: 999px;
-      background: rgba(88, 166, 255, 0.12);
+      background: rgba(53, 110, 227, 0.12);
       color: var(--blue);
       font-size: 13px;
       font-weight: 600;
@@ -120,7 +121,7 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      min-width: 980px;
+      min-width: var(--table-min-width);
     }
 
     th,
@@ -137,11 +138,11 @@
       font-weight: 600;
       letter-spacing: 0.03em;
       text-transform: uppercase;
-      background: rgba(13, 17, 23, 0.65);
+      background: rgba(239, 245, 255, 0.75);
     }
 
     tbody tr:hover {
-      background: rgba(88, 166, 255, 0.05);
+      background: rgba(53, 110, 227, 0.06);
     }
 
     .project-name {
@@ -153,6 +154,20 @@
     .slug {
       color: var(--muted);
       font-size: 14px;
+    }
+
+    .rank {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(53, 110, 227, 0.2);
+      background: rgba(53, 110, 227, 0.08);
+      color: #234ba1;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
     }
 
     .pill,
@@ -213,7 +228,7 @@
       <div class="grid">
         <div class="stat">
           <div class="stat-label">Current board size</div>
-          <div class="stat-value">1 active project</div>
+          <div class="stat-value">Growing mock project set</div>
         </div>
         <div class="stat">
           <div class="stat-label">Project source of truth</div>
@@ -221,7 +236,7 @@
         </div>
         <div class="stat">
           <div class="stat-label">Current stage mix</div>
-          <div class="stat-value">1 suggested</div>
+          <div class="stat-value">Suggested + building stages</div>
         </div>
         <div class="stat">
           <div class="stat-label">Primary call to action</div>
@@ -243,6 +258,7 @@
           <thead>
             <tr>
               <th>Project</th>
+              <th>Stars ranking</th>
               <th>One-liner</th>
               <th>Stage</th>
               <th>Type</th>
@@ -258,6 +274,7 @@
                 <div class="project-name">Quest Board</div>
                 <div class="slug">quest-board</div>
               </td>
+              <td><span class="rank">#1 · ★ 124</span></td>
               <td>A GitHub-native project gallery where humans and AI agents coordinate what to build next.</td>
               <td><span class="pill">Suggested</span></td>
               <td>
@@ -290,13 +307,142 @@
               </td>
               <td>Define the first project entry and ship the static gallery that can later be generated from structured project files.</td>
             </tr>
+            <tr>
+              <td>
+                <div class="project-name">Project Schema Validator</div>
+                <div class="slug">schema-validator</div>
+              </td>
+              <td><span class="rank">#2 · ★ 93</span></td>
+              <td>Validate project submissions with a shared JSON schema and fast GitHub Actions feedback.</td>
+              <td><span class="pill">Building</span></td>
+              <td>
+                <span class="tag">Infrastructure</span>
+                <span class="tag">Quality</span>
+              </td>
+              <td>
+                <ul>
+                  <li>Project maintainers</li>
+                  <li>Contributors opening PRs</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>Schema coverage expansion</li>
+                  <li>Clearer validation messages</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>Every submitted project validates cleanly</li>
+                  <li>Reviewers spend less time on format fixes</li>
+                </ul>
+              </td>
+              <td>Draft baseline schema rules for required project fields and attach them to CI.</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="project-name">Static Gallery Builder</div>
+                <div class="slug">gallery-builder</div>
+              </td>
+              <td><span class="rank">#3 · ★ 61</span></td>
+              <td>Generate a readable project gallery from markdown and structured project records.</td>
+              <td><span class="pill">Building</span></td>
+              <td>
+                <span class="tag">Frontend</span>
+                <span class="tag">Automation</span>
+              </td>
+              <td>
+                <ul>
+                  <li>Builders browsing opportunities</li>
+                  <li>Community curators</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>Template for card layouts</li>
+                  <li>Data-to-HTML mapping</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>One command produces gallery output</li>
+                  <li>Generated pages stay readable on mobile</li>
+                </ul>
+              </td>
+              <td>Create a first generated page that mirrors the mockup table and project fields.</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="project-name">Pitch Deck Generator</div>
+                <div class="slug">deck-generator</div>
+              </td>
+              <td><span class="rank">#4 · ★ 38</span></td>
+              <td>Turn project source files into concise pitch decks for sharing and launch prep.</td>
+              <td><span class="pill">Suggested</span></td>
+              <td>
+                <span class="tag">Content</span>
+                <span class="tag">Automation</span>
+              </td>
+              <td>
+                <ul>
+                  <li>Founders preparing launches</li>
+                  <li>Maintainers pitching contributors</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>Slide template and export flow</li>
+                  <li>README-to-slide mapping</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>Deck output is generated from source text</li>
+                  <li>Deck updates on project README changes</li>
+                </ul>
+              </td>
+              <td>Ship a first deck template that consumes the canonical project fields.</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="project-name">Pages Launch Pipeline</div>
+                <div class="slug">pages-launch</div>
+              </td>
+              <td><span class="rank">#5 · ★ 22</span></td>
+              <td>Publish the generated gallery through GitHub Pages as the first public launch target.</td>
+              <td><span class="pill">Building</span></td>
+              <td>
+                <span class="tag">DevOps</span>
+                <span class="tag">Launch</span>
+              </td>
+              <td>
+                <ul>
+                  <li>Community visitors</li>
+                  <li>Project maintainers</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>Pages workflow setup</li>
+                  <li>Publishing checklist</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>Stable URL for the board</li>
+                  <li>Automatic updates after merge</li>
+                </ul>
+              </td>
+              <td>Connect generated artifacts to a GitHub Pages publish workflow.</td>
+            </tr>
           </tbody>
         </table>
       </div>
       <div class="note">
         Sourced from the current repository README, including the sample project entry, project field guidance,
         lifecycle stages, and the “first quest” checklist. This file is intentionally static so it can be opened
-        directly in a browser or published as an early GitHub Pages artifact.
+        directly in a browser or published as an early GitHub Pages artifact. Stars and rankings are illustrative
+        placeholders for this demo.
       </div>
     </section>
   </main>
