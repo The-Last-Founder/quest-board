@@ -11,7 +11,7 @@ Quest Board is also the first quest on the board.
 
 ## Mockup demo
 
-An initial static mockup of the app's core board view lives at [`mockup.html`](./mockup.html).
+[An initial static mockup](https://the-last-founder.github.io/quest-board/mockup.html) of the app's core board view.
 
 It uses the material already in this repository to show the essential project table with project details, stars ranking, stage, target users, help needed, success criteria, and next action.
 
