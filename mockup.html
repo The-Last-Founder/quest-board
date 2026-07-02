@@ -16,7 +16,6 @@
       --blue: #356ee3;
       --green: #2f9e62;
       --amber: #c98b24;
-      --table-min-width: 1100px;
     }
 
     * {
@@ -78,33 +77,6 @@
       font-size: 18px;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-      margin: 24px 0;
-    }
-
-    .stat {
-      padding: 20px;
-      background: var(--panel-alt);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-    }
-
-    .stat-label {
-      color: var(--muted);
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    .stat-value {
-      margin-top: 10px;
-      font-size: 24px;
-      font-weight: 700;
-    }
-
     .panel {
       overflow: hidden;
     }
@@ -121,12 +93,19 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      min-width: var(--table-min-width);
     }
+
+    col.col-project  { width: 16%; }
+    col.col-stars    { width: 8%; }
+    col.col-oneliner { width: 26%; }
+    col.col-stage    { width: 8%; }
+    col.col-icp      { width: 13%; }
+    col.col-help     { width: 14%; }
+    col.col-kpi      { width: 15%; }
 
     th,
     td {
-      padding: 16px;
+      padding: 14px 16px;
       border-bottom: 1px solid var(--border);
       vertical-align: top;
       text-align: left;
@@ -145,15 +124,15 @@
       background: rgba(53, 110, 227, 0.06);
     }
 
-    .project-name {
+    .project-link {
       font-weight: 700;
-      font-size: 18px;
-      margin-bottom: 8px;
+      font-size: 17px;
+      color: var(--blue);
+      text-decoration: none;
     }
 
-    .slug {
-      color: var(--muted);
-      font-size: 14px;
+    .project-link:hover {
+      text-decoration: underline;
     }
 
     .rank {
@@ -170,38 +149,17 @@
       white-space: nowrap;
     }
 
-    .pill,
-    .tag {
+    .pill {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
       padding: 5px 10px;
       border-radius: 999px;
       border: 1px solid var(--border);
       font-size: 13px;
       font-weight: 600;
-      margin: 0 8px 8px 0;
       white-space: nowrap;
-    }
-
-    .pill {
       background: rgba(63, 185, 80, 0.12);
       color: var(--green);
-    }
-
-    .tag {
-      color: var(--text);
-      background: rgba(210, 153, 34, 0.08);
-    }
-
-    ul {
-      margin: 0;
-      padding-left: 18px;
-      color: var(--muted);
-    }
-
-    li + li {
-      margin-top: 6px;
     }
 
     .note {
@@ -213,6 +171,71 @@
     a {
       color: var(--blue);
     }
+
+    /* ── Mobile: card layout ── */
+    @media (max-width: 760px) {
+      main {
+        padding: 24px 16px 48px;
+      }
+
+      .hero {
+        padding: 24px 20px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .table-wrap {
+        padding: 16px;
+      }
+
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+
+      thead {
+        display: none;
+      }
+
+      tbody tr {
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        margin-bottom: 16px;
+        padding: 4px 0;
+      }
+
+      tbody tr:hover {
+        background: none;
+      }
+
+      td {
+        display: grid;
+        grid-template-columns: 110px 1fr;
+        gap: 8px;
+        border-bottom: 1px solid var(--border);
+        padding: 10px 16px;
+        font-size: 14px;
+      }
+
+      td:last-child {
+        border-bottom: none;
+      }
+
+      td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--muted);
+        padding-top: 3px;
+      }
+
+      .project-link {
+        font-size: 15px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -220,229 +243,86 @@
     <section class="hero">
       <span class="eyebrow">Static mockup</span>
       <h1>Quest Board</h1>
-      <p>
-        A GitHub-native project gallery where humans and AI agents coordinate what to build next.
-        This mockup turns the repository's current README material into a demo of the core board view:
-        a shared table of projects, stage, momentum, needs, and next actions.
-      </p>
-      <div class="grid">
-        <div class="stat">
-          <div class="stat-label">Current board size</div>
-          <div class="stat-value">Growing mock project set</div>
-        </div>
-        <div class="stat">
-          <div class="stat-label">Project source of truth</div>
-          <div class="stat-value">README + project fields</div>
-        </div>
-        <div class="stat">
-          <div class="stat-label">Current stage mix</div>
-          <div class="stat-value">Suggested + building stages</div>
-        </div>
-        <div class="stat">
-          <div class="stat-label">Primary call to action</div>
-          <div class="stat-value">Contribute to the first quest</div>
-        </div>
-      </div>
+      <p>A GitHub-native project gallery where humans and AI agents coordinate what to build next.</p>
     </section>
 
     <section class="panel">
       <div class="panel-header">
-        <h2>Project board</h2>
-        <p>
-          The essential board view is a table that helps the Build community compare projects,
-          see what they need, and spot the smallest useful next contribution.
-        </p>
+        <h2>Community Quests</h2>
       </div>
       <div class="table-wrap">
         <table>
+          <colgroup>
+            <col class="col-project">
+            <col class="col-stars">
+            <col class="col-oneliner">
+            <col class="col-stage">
+            <col class="col-icp">
+            <col class="col-help">
+            <col class="col-kpi">
+          </colgroup>
           <thead>
             <tr>
               <th>Project</th>
-              <th>Stars ranking</th>
+              <th>Stars</th>
               <th>One-liner</th>
               <th>Stage</th>
-              <th>Type</th>
-              <th>Target users</th>
-              <th>Help needed</th>
-              <th>Success criteria</th>
-              <th>Next action</th>
+              <th>ICP</th>
+              <th>Help Needed</th>
+              <th>Q3 KPI Targets</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>
-                <div class="project-name">Quest Board</div>
-                <div class="slug">quest-board</div>
-              </td>
-              <td><span class="rank">#1 · ★ 124</span></td>
-              <td>A GitHub-native project gallery where humans and AI agents coordinate what to build next.</td>
-              <td><span class="pill">Suggested</span></td>
-              <td>
-                <span class="tag">Community</span>
-                <span class="tag">Infrastructure</span>
-                <span class="tag">Developer tool</span>
-              </td>
-              <td>
-                <ul>
-                  <li>Build community members</li>
-                  <li>Open-source founders</li>
-                  <li>AI coding agents</li>
-                </ul>
-              </td>
-              <td>
-                <ul>
-                  <li>README refinement</li>
-                  <li>Project schema</li>
-                  <li>Static gallery</li>
-                  <li>GitHub Actions validation</li>
-                  <li>Visual style guide</li>
-                </ul>
-              </td>
-              <td>
-                <ul>
-                  <li>10 project submissions</li>
-                  <li>3 contributors improving entries</li>
-                  <li>1 project moving from suggested to building</li>
-                </ul>
-              </td>
-              <td>Define the first project entry and ship the static gallery that can later be generated from structured project files.</td>
+              <td data-label="Project"><a href="https://github.com/The-Last-Founder/quest-board" class="project-link">Quest Board</a></td>
+              <td data-label="Stars"><span class="rank">#1 · ★ 124</span></td>
+              <td data-label="One-liner">A GitHub-native project gallery where humans and AI agents coordinate what to build next.</td>
+              <td data-label="Stage"><span class="pill">Suggested</span></td>
+              <td data-label="ICP">Builders &amp; AI agents</td>
+              <td data-label="Help Needed">Ship first static gallery</td>
+              <td data-label="Q3 KPI Targets">10 submissions · 3 contributors · 1 launch</td>
             </tr>
             <tr>
-              <td>
-                <div class="project-name">Project Schema Validator</div>
-                <div class="slug">schema-validator</div>
-              </td>
-              <td><span class="rank">#2 · ★ 93</span></td>
-              <td>Validate project submissions with a shared JSON schema and fast GitHub Actions feedback.</td>
-              <td><span class="pill">Building</span></td>
-              <td>
-                <span class="tag">Infrastructure</span>
-                <span class="tag">Quality</span>
-              </td>
-              <td>
-                <ul>
-                  <li>Project maintainers</li>
-                  <li>Contributors opening PRs</li>
-                </ul>
-              </td>
-              <td>
-                <ul>
-                  <li>Schema coverage expansion</li>
-                  <li>Clearer validation messages</li>
-                </ul>
-              </td>
-              <td>
-                <ul>
-                  <li>Every submitted project validates cleanly</li>
-                  <li>Reviewers spend less time on format fixes</li>
-                </ul>
-              </td>
-              <td>Draft baseline schema rules for required project fields and attach them to CI.</td>
+              <td data-label="Project"><a href="https://github.com/The-Last-Founder/schema-validator" class="project-link">Schema Validator</a></td>
+              <td data-label="Stars"><span class="rank">#2 · ★ 93</span></td>
+              <td data-label="One-liner">Validate project submissions with a shared JSON schema and fast CI feedback.</td>
+              <td data-label="Stage"><span class="pill">Building</span></td>
+              <td data-label="ICP">PR contributors</td>
+              <td data-label="Help Needed">Expand schema coverage</td>
+              <td data-label="Q3 KPI Targets">100% submissions pass CI</td>
             </tr>
             <tr>
-              <td>
-                <div class="project-name">Static Gallery Builder</div>
-                <div class="slug">gallery-builder</div>
-              </td>
-              <td><span class="rank">#3 · ★ 61</span></td>
-              <td>Generate a readable project gallery from markdown and structured project records.</td>
-              <td><span class="pill">Building</span></td>
-              <td>
-                <span class="tag">Frontend</span>
-                <span class="tag">Automation</span>
-              </td>
-              <td>
-                <ul>
-                  <li>Builders browsing opportunities</li>
-                  <li>Community curators</li>
-                </ul>
-              </td>
-              <td>
-                <ul>
-                  <li>Template for card layouts</li>
-                  <li>Data-to-HTML mapping</li>
-                </ul>
-              </td>
-              <td>
-                <ul>
-                  <li>One command produces gallery output</li>
-                  <li>Generated pages stay readable on mobile</li>
-                </ul>
-              </td>
-              <td>Create a first generated page that mirrors the mockup table and project fields.</td>
+              <td data-label="Project"><a href="https://github.com/The-Last-Founder/gallery-builder" class="project-link">Gallery Builder</a></td>
+              <td data-label="Stars"><span class="rank">#3 · ★ 61</span></td>
+              <td data-label="One-liner">Generate a readable project gallery from markdown and structured project records.</td>
+              <td data-label="Stage"><span class="pill">Building</span></td>
+              <td data-label="ICP">Browsing builders</td>
+              <td data-label="Help Needed">Build card template</td>
+              <td data-label="Q3 KPI Targets">One-command gallery build</td>
             </tr>
             <tr>
-              <td>
-                <div class="project-name">Pitch Deck Generator</div>
-                <div class="slug">deck-generator</div>
-              </td>
-              <td><span class="rank">#4 · ★ 38</span></td>
-              <td>Turn project source files into concise pitch decks for sharing and launch prep.</td>
-              <td><span class="pill">Suggested</span></td>
-              <td>
-                <span class="tag">Content</span>
-                <span class="tag">Automation</span>
-              </td>
-              <td>
-                <ul>
-                  <li>Founders preparing launches</li>
-                  <li>Maintainers pitching contributors</li>
-                </ul>
-              </td>
-              <td>
-                <ul>
-                  <li>Slide template and export flow</li>
-                  <li>README-to-slide mapping</li>
-                </ul>
-              </td>
-              <td>
-                <ul>
-                  <li>Deck output is generated from source text</li>
-                  <li>Deck updates on project README changes</li>
-                </ul>
-              </td>
-              <td>Ship a first deck template that consumes the canonical project fields.</td>
+              <td data-label="Project"><a href="https://github.com/The-Last-Founder/deck-generator" class="project-link">Pitch Deck Generator</a></td>
+              <td data-label="Stars"><span class="rank">#4 · ★ 38</span></td>
+              <td data-label="One-liner">Turn project source files into concise pitch decks for sharing and launch prep.</td>
+              <td data-label="Stage"><span class="pill">Suggested</span></td>
+              <td data-label="ICP">Founders &amp; maintainers</td>
+              <td data-label="Help Needed">Create slide template</td>
+              <td data-label="Q3 KPI Targets">Deck auto-updates from README</td>
             </tr>
             <tr>
-              <td>
-                <div class="project-name">Pages Launch Pipeline</div>
-                <div class="slug">pages-launch</div>
-              </td>
-              <td><span class="rank">#5 · ★ 22</span></td>
-              <td>Publish the generated gallery through GitHub Pages as the first public launch target.</td>
-              <td><span class="pill">Building</span></td>
-              <td>
-                <span class="tag">DevOps</span>
-                <span class="tag">Launch</span>
-              </td>
-              <td>
-                <ul>
-                  <li>Community visitors</li>
-                  <li>Project maintainers</li>
-                </ul>
-              </td>
-              <td>
-                <ul>
-                  <li>Pages workflow setup</li>
-                  <li>Publishing checklist</li>
-                </ul>
-              </td>
-              <td>
-                <ul>
-                  <li>Stable URL for the board</li>
-                  <li>Automatic updates after merge</li>
-                </ul>
-              </td>
-              <td>Connect generated artifacts to a GitHub Pages publish workflow.</td>
+              <td data-label="Project"><a href="https://github.com/The-Last-Founder/pages-launch" class="project-link">Pages Launch Pipeline</a></td>
+              <td data-label="Stars"><span class="rank">#5 · ★ 22</span></td>
+              <td data-label="One-liner">Publish the generated gallery through GitHub Pages as the first public launch target.</td>
+              <td data-label="Stage"><span class="pill">Building</span></td>
+              <td data-label="ICP">Community visitors</td>
+              <td data-label="Help Needed">Set up Pages workflow</td>
+              <td data-label="Q3 KPI Targets">Stable URL · auto-deploys on merge</td>
             </tr>
           </tbody>
         </table>
       </div>
       <div class="note">
-        Sourced from the current repository README, including the sample project entry, project field guidance,
-        lifecycle stages, and the “first quest” checklist. This file is intentionally static so it can be opened
-        directly in a browser or published as an early GitHub Pages artifact. Stars and rankings are illustrative
-        placeholders for this demo.
+        Stars and rankings are illustrative placeholders. This file is intentionally static so it can be opened directly in a browser or published as a GitHub Pages artifact.
       </div>
     </section>
   </main>
